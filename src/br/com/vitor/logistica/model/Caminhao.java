@@ -23,7 +23,6 @@ public class Caminhao extends Veiculo implements Seguravel{
         return quantidadeEixos;
     }
 
-
     @Override
     public double calcularCustoViagem(double distancia) {
         return distancia * 5.0 + (quantidadeEixos * 10);

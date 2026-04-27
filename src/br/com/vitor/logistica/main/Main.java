@@ -156,7 +156,6 @@ public class Main {
 
             if (!veiculosAptos.isEmpty()) {
                 arquivoService.exportarParaExcel(veiculosAptos, r);
-                // Print de sucesso com uma linha em branco depois
                 System.out.println("\n✅ Relatório '" + r.getDestino() + "' gerado com sucesso!");
             } else {
                 System.err.println("\n⚠️ NENHUM VEÍCULO DA FROTA SUPORTA ESTA CARGA.");

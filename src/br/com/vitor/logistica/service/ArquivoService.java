@@ -11,8 +11,6 @@ public class ArquivoService {
         try (PrintWriter writer = new PrintWriter(new FileWriter("minha_frota_cadastrada.csv"))) {
             writer.println("TIPO;PLACA;MODELO;CAPACIDADE;EIXOS");
             for (Veiculo v : frota) {
-                // Reaproveitamos a lógica do CSV, mas sem custo de viagem aqui
-                // Criaremos um toCSV simples para a base da frota
                 writer.println(v.toCSVBase());
             }
         } catch (IOException e) {
@@ -21,16 +19,16 @@ public class ArquivoService {
     }
 
     public void exportarParaExcel(ArrayList<Veiculo> frota, PedidoFrete pedidoFrete) {
-        // Criamos o arquivo com o nome da rota para ficar organizado
+        // Criei o arquivo com o nome da rota para ficar organizado
         String nomeArquivo = "Relatorio_" + pedidoFrete.getDestino().replace(" ", "_") + ".csv";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(nomeArquivo))) {
             writer.println("sep=;");
 
-            // 1. Criamos o Cabeçalho (as colunas do Excel)
+            // 1. Criei o Cabeçalho (as colunas do Excel)
             writer.println("TIPO;MODELO;CAPACIDADE;SEGURO;CUSTO_TOTAL");
 
-            // 2. Varremos a frota para escrever os dados
+            // 2. Varri a frota para escrever os dados
             for (Veiculo v : frota) {
                 double seguro = 0;
                 if (v instanceof Seguravel s) {
@@ -38,7 +36,7 @@ public class ArquivoService {
                 }
                 double custoViagem = v.calcularCustoViagem(pedidoFrete.getDistancia());
 
-                // Escrevemos a linha do veículo no arquivo
+                // Escrevi a linha do veículo no arquivo
                 writer.println(v.toCSV(custoViagem, seguro));
             }
 

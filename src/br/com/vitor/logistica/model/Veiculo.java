@@ -17,4 +17,7 @@ public abstract class Veiculo {
     public String getPlaca() { return placa; }
     public String getModelo() { return modelo; }
     public double getCapacidadeCarga() { return capacidadeCarga; }
+
+    public abstract String toCSV(double custo, double seguro);
+    public abstract String toCSVBase();
 }
